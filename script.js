@@ -244,15 +244,6 @@
   }
 
   /* ---------------------------------------------------------
-     Zusage (Platzhalter)
-     --------------------------------------------------------- */
-  $("#rsvpBtn").addEventListener("click", () => {
-    $("#rsvpNote").hidden = false;
-    const r = $("#rsvpBtn").getBoundingClientRect();
-    burst(r.left + r.width / 2, r.top, 8);
-  });
-
-  /* ---------------------------------------------------------
      Hauptschleife
      --------------------------------------------------------- */
   let lastY = scrollY, lastT = performance.now(), vel = 0;

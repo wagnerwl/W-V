@@ -35,6 +35,7 @@
 
   <!-- ============ HERO / KARTE ============ -->
   <header class="hero" id="top">
+    <p class="hero-greet" id="heroGreet" hidden></p>
     <p class="eyebrow fade" style="--d:0">Wir heiraten</p>
 
     <h1 class="names">
@@ -136,16 +137,98 @@
       </div>
     </section>
 
-    <!-- ============ RSVP ============ -->
+    <!-- ============ PERSÖNLICHE EINLADUNG / ZUSAGE ============ -->
     <section class="rsvp section paper-2" id="rsvp">
       <div class="rsvp-card reveal">
         <img class="corner c1" src="assets/maple.svg" alt="" aria-hidden="true">
         <img class="corner c2" src="assets/leaf-b.svg" alt="" aria-hidden="true">
-        <p class="eyebrow">Um Antwort wird gebeten</p>
-        <h2>bis zum 01. August 2027</h2>
-        <p>Wir freuen uns sehr, wenn ihr dabei seid.</p>
-        <button type="button" class="btn" id="rsvpBtn">Zusagen</button>
-        <p class="note" id="rsvpNote" hidden>Das Antwortformular folgt in Kürze.</p>
+
+        <!-- 1) Passwort -->
+        <div class="rsvp-view" id="rsvpLogin">
+          <p class="eyebrow">Eure persönliche Einladung</p>
+          <h2>Zusage</h2>
+          <p class="lead-text">Bitte gebt das Passwort von eurer Einladungskarte ein.</p>
+          <form id="loginForm" class="form" novalidate>
+            <label class="field">
+              <span>Passwort</span>
+              <input id="pw" name="pw" type="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go">
+            </label>
+            <button class="btn" type="submit" id="loginBtn">Einladung öffnen</button>
+            <p class="form-msg" id="loginMsg" role="alert" aria-live="polite"></p>
+          </form>
+          <p class="note" id="loginDeadline"></p>
+        </div>
+
+        <!-- 2) Formular -->
+        <div class="rsvp-view" id="rsvpForm" hidden>
+          <p class="greet" id="greet"></p>
+          <h2 id="formTitle">Seid ihr dabei?</h2>
+          <form id="answerForm" class="form" novalidate>
+            <fieldset class="choice">
+              <legend class="sr-only">Zusage oder Absage</legend>
+              <label class="pill"><input type="radio" name="attending" value="yes"><span id="yesLabel">Wir kommen gerne</span></label>
+              <label class="pill"><input type="radio" name="attending" value="no"><span id="noLabel">Wir können leider nicht</span></label>
+            </fieldset>
+
+            <div id="yesFields" hidden>
+              <fieldset class="group" id="personsField">
+                <legend>Wer kommt?</legend>
+                <div id="persons" class="checks"></div>
+              </fieldset>
+
+              <fieldset class="group" id="companionField" hidden>
+                <legend>Begleitung</legend>
+                <label class="check"><input type="checkbox" id="companion"><span>Ich bringe eine Begleitung mit</span></label>
+                <label class="field" id="companionNameWrap" hidden>
+                  <span>Name der Begleitung</span>
+                  <input id="companionName" type="text" maxlength="80" autocomplete="off">
+                </label>
+              </fieldset>
+
+              <fieldset class="group" id="kidsField" hidden>
+                <legend>Kinder <small id="kidsMax"></small></legend>
+                <div class="stepper">
+                  <button type="button" data-step="-1" aria-label="Ein Kind weniger">−</button>
+                  <output id="kidsCount" aria-live="polite">0</output>
+                  <button type="button" data-step="1" aria-label="Ein Kind mehr">+</button>
+                </div>
+                <label class="field" id="kidsInfoWrap" hidden>
+                  <span>Namen &amp; Alter</span>
+                  <input id="kidsInfo" type="text" maxlength="200" autocomplete="off">
+                </label>
+              </fieldset>
+
+              <fieldset class="group" id="stayField" hidden>
+                <legend>Übernachtung auf dem Gut</legend>
+                <div id="stayOptions" class="choice wrap"></div>
+              </fieldset>
+
+              <label class="field">
+                <span>Essenswünsche / Allergien</span>
+                <input id="food" type="text" maxlength="300" autocomplete="off" placeholder="z. B. vegetarisch">
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Nachricht an uns (optional)</span>
+              <textarea id="message" rows="3" maxlength="1000"></textarea>
+            </label>
+
+            <button class="btn" type="submit" id="sendBtn">Antwort senden</button>
+            <p class="form-msg" id="answerMsg" role="alert" aria-live="polite"></p>
+          </form>
+          <button class="link" type="button" id="logout">Nicht eure Einladung? Abmelden</button>
+        </div>
+
+        <!-- 3) Bestätigung -->
+        <div class="rsvp-view" id="rsvpDone" hidden>
+          <p class="greet" id="doneGreet"></p>
+          <h2 id="doneTitle">Danke!</h2>
+          <dl class="summary" id="doneList"></dl>
+          <p class="lead-text" id="doneText"></p>
+          <button class="btn ghost" type="button" id="editAnswer">Antwort ändern</button>
+          <p class="note" id="doneNote"></p>
+        </div>
       </div>
     </section>
   </main>
@@ -160,6 +243,8 @@
     <p class="credit">Musik: P. I. Tschaikowsky – Blumenwalzer aus „Der Nussknacker“, gespielt vom Concert Band der U.S. Air Force Band (gemeinfrei)</p>
   </footer>
 
+  <script src="config.js" defer></script>
+  <script src="rsvp.js" defer></script>
   <script src="sound.js" defer></script>
   <script src="script.js" defer></script>
 </body>
