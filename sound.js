@@ -1,7 +1,7 @@
 /* =========================================================
    Klangkulisse
-   - J. S. Bach: Air (Orchestersuite Nr. 3, BWV 1068)
-     gespielt von den Air Force Strings, U.S. Air Force Band – gemeinfrei
+   - P. I. Tschaikowsky: Blumenwalzer aus „Der Nussknacker“, op. 71a
+     gespielt vom Concert Band der U.S. Air Force Band (Arr. Lawrence Odom) – gemeinfrei
    - darunter leiser, live erzeugter Herbstwind (Web Audio API)
    Startet nur auf Knopfdruck (Browser erlauben keinen Autoplay-Ton).
    ========================================================= */
@@ -13,8 +13,8 @@
   if (!btn) return;
   if (!AC) { btn.hidden = true; return; }
 
-  const MUSIC_SRC = "assets/audio/bach-air.m4a";
-  const MUSIC_LEVEL = .6;     // Musik im Verhältnis zum Wind
+  const MUSIC_SRC = "assets/audio/blumenwalzer.m4a";
+  const MUSIC_LEVEL = .9;     // Musik im Verhältnis zum Wind
   const PAUSE_BETWEEN = 6000; // ms nur Wind, bevor das Stück von vorn beginnt
 
   const rand = (a, b) => a + Math.random() * (b - a);
@@ -29,7 +29,14 @@
     ctx = new AC();
     master = ctx.createGain();
     master.gain.value = 0;
-    master.connect(ctx.destination);
+    // Limiter am Ende, damit nichts übersteuert
+    const limiter = ctx.createDynamicsCompressor();
+    limiter.threshold.value = -3;
+    limiter.knee.value = 0;
+    limiter.ratio.value = 20;
+    limiter.attack.value = .003;
+    limiter.release.value = .25;
+    master.connect(limiter).connect(ctx.destination);
 
     // Musik über Web Audio, damit sich die Lautstärke auch auf dem iPhone regeln lässt
     audio = new Audio();
@@ -37,9 +44,19 @@
     audio.preload = "auto";
     audio.setAttribute("playsinline", "");
     const src = ctx.createMediaElementSource(audio);
+    // Der Walzer hat große Lautstärkeunterschiede (leises Harfen-Intro, lautes Finale):
+    // sanft komprimieren und etwas anheben, damit er am Handy gleichmäßig klingt
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -32;
+    comp.knee.value = 12;
+    comp.ratio.value = 3.5;
+    comp.attack.value = .05;
+    comp.release.value = .6;
+    const makeup = ctx.createGain();
+    makeup.gain.value = 2.2;
     musicGain = ctx.createGain();
     musicGain.gain.value = 0;
-    src.connect(musicGain).connect(master);
+    src.connect(comp).connect(makeup).connect(musicGain).connect(master);
 
     audio.addEventListener("ended", () => {
       musicGain.gain.setValueAtTime(0, ctx.currentTime);
