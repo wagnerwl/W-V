@@ -16,6 +16,11 @@
 
   <canvas id="leaves" aria-hidden="true"></canvas>
 
+  <button class="sound" id="soundBtn" type="button" aria-pressed="false" aria-label="Musik und Herbstklänge einschalten">
+    <span class="sound-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="sound-label">Musik an</span>
+  </button>
+
   <!-- Goldverlauf für alle Linien -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
@@ -154,6 +159,7 @@
     <p class="sign reveal">Veronika &amp; Wladimir</p>
   </footer>
 
+  <script src="sound.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

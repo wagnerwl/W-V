@@ -120,7 +120,10 @@
   document.addEventListener("pointercancel", () => { tap = null; }, { passive: true });
   document.addEventListener("pointerup", e => {
     if (!tap) return;
-    if (Math.hypot(e.clientX - tap.x, e.clientY - tap.y) < 12 && performance.now() - tap.t < 500) burst(e.clientX, e.clientY, 5);
+    if (Math.hypot(e.clientX - tap.x, e.clientY - tap.y) < 12 && performance.now() - tap.t < 500) {
+      burst(e.clientX, e.clientY, 5);
+      window.Ambience?.rustle(e.clientX / W, .7);
+    }
     tap = null;
   }, { passive: true });
 
@@ -168,7 +171,7 @@
     lastStoryP = -1;
   }
 
-  let lastStoryP = -1;
+  let lastStoryP = -1, lastStep = -1;
   function updateStory() {
     const r = story.getBoundingClientRect();
     const p = clamp(-r.top / (r.height - H));
@@ -187,6 +190,10 @@
     });
 
     const idx = p < .2 ? 0 : p < .44 ? 1 : p < .68 ? 2 : 3;
+    if (idx !== lastStep) {
+      if (lastStep !== -1) window.Ambience?.chime();
+      lastStep = idx;
+    }
     steps.forEach((s, i) => s.classList.toggle("on", i === idx));
   }
 
@@ -248,12 +255,14 @@
     $("#rsvpNote").hidden = false;
     const r = $("#rsvpBtn").getBoundingClientRect();
     burst(r.left + r.width / 2, r.top, 8);
+    window.Ambience?.chime();
   });
 
   /* ---------------------------------------------------------
      Hauptschleife
      --------------------------------------------------------- */
   let lastY = scrollY, lastT = performance.now(), vel = 0;
+  let soundBtn = $("#soundBtn");
   function frame(now) {
     const dt = clamp((now - lastT) / 16.67, 0, 3);
     lastT = now;
@@ -262,6 +271,8 @@
     lastY = y;
 
     updateHero(y);
+    window.Ambience?.setScroll(Math.abs(vel));
+    if (y > 120 && soundBtn) { soundBtn.classList.add("compact"); soundBtn = null; }
     updateStory();
     updateTimeline();
     if (!reduceMotion) stepLeaves(dt, now, clamp(vel, -50, 50));
