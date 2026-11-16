@@ -122,7 +122,6 @@
     if (!tap) return;
     if (Math.hypot(e.clientX - tap.x, e.clientY - tap.y) < 12 && performance.now() - tap.t < 500) {
       burst(e.clientX, e.clientY, 5);
-      window.Ambience?.rustle(e.clientX / W, .7);
     }
     tap = null;
   }, { passive: true });
@@ -171,7 +170,7 @@
     lastStoryP = -1;
   }
 
-  let lastStoryP = -1, lastStep = -1;
+  let lastStoryP = -1;
   function updateStory() {
     const r = story.getBoundingClientRect();
     const p = clamp(-r.top / (r.height - H));
@@ -190,10 +189,6 @@
     });
 
     const idx = p < .2 ? 0 : p < .44 ? 1 : p < .68 ? 2 : 3;
-    if (idx !== lastStep) {
-      if (lastStep !== -1) window.Ambience?.chime();
-      lastStep = idx;
-    }
     steps.forEach((s, i) => s.classList.toggle("on", i === idx));
   }
 
@@ -255,7 +250,6 @@
     $("#rsvpNote").hidden = false;
     const r = $("#rsvpBtn").getBoundingClientRect();
     burst(r.left + r.width / 2, r.top, 8);
-    window.Ambience?.chime();
   });
 
   /* ---------------------------------------------------------

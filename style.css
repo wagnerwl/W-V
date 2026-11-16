@@ -511,6 +511,15 @@ img { max-width: 100%; display: block; }
   margin-top: 6px;
 }
 
+.credit {
+  max-width: 34ch;
+  margin: 48px auto 0;
+  font-size: .68rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  opacity: .75;
+}
+
 /* =========================================================
    Reveal
    ========================================================= */
