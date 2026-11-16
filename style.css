@@ -1,5 +1,5 @@
 /* =========================================================
-   Klara & Robert – Hochzeitseinladung im Aquarell-Stil
+   Veronika & Wladimir – Hochzeitseinladung im Aquarell-Stil
    ========================================================= */
 :root {
   --paper: #fbf6ee;
@@ -106,7 +106,7 @@ img { max-width: 100%; display: block; }
   will-change: transform;
 }
 .name {
-  font-size: clamp(2.7rem, 13.5vw, 5.2rem);
+  font-size: clamp(2.1rem, 10.6vw, 5rem);
   font-weight: 500;
   letter-spacing: .16em;
   margin-right: -.16em; /* optisch zentriert trotz Sperrung */
