@@ -3,190 +3,155 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#1e1009">
-  <title>Goldener Herbst</title>
-  <meta name="description" content="Ein herbstlicher Scroll-Spaziergang: Sieh zu, wie aus einem kleinen Samen ein leuchtender Riesenkürbis wird.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎃</text></svg>">
+  <meta name="theme-color" content="#fbf6ee">
+  <title>Klara &amp; Robert · 09.10.2027</title>
+  <meta name="description" content="Wir heiraten am 09. Oktober 2027 – und möchten diesen Tag mit euch feiern.">
+  <link rel="icon" href="assets/maple.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Fallende Blätter (über allem, klickt nicht mit) -->
   <canvas id="leaves" aria-hidden="true"></canvas>
-  <div class="progress" aria-hidden="true"><span></span></div>
 
-  <!-- Wiederverwendbarer Laternen-Kürbis -->
+  <!-- Goldverlauf für alle Linien -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="lantern" viewBox="0 0 200 200">
-      <path d="M94 84 C92 70 90 62 84 54 L96 50 C102 60 106 72 106 84 Z" fill="#6b5a24"/>
-      <ellipse cx="58"  cy="136" rx="42" ry="52" fill="#c2500f"/>
-      <ellipse cx="142" cy="136" rx="42" ry="52" fill="#c2500f"/>
-      <ellipse cx="78"  cy="136" rx="38" ry="56" fill="#e36d14"/>
-      <ellipse cx="122" cy="136" rx="38" ry="56" fill="#e36d14"/>
-      <ellipse cx="100" cy="136" rx="30" ry="58" fill="#f88f2c"/>
-      <g fill="#ffd45e">
-        <path d="M62 126 L86 126 L74 104 Z"/>
-        <path d="M114 126 L138 126 L126 104 Z"/>
-        <path d="M94 142 L106 142 L100 132 Z"/>
-        <path d="M58 154 Q100 188 142 154 L132 156 L126 166 L118 158 L108 170 L100 160 L92 170 L82 158 L74 166 L68 156 Z"/>
-      </g>
-    </symbol>
+    <defs>
+      <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0.3">
+        <stop offset="0" stop-color="#b98a4a"/>
+        <stop offset=".35" stop-color="#dcbb7d"/>
+        <stop offset=".65" stop-color="#a8743f"/>
+        <stop offset="1" stop-color="#cfa766"/>
+      </linearGradient>
+    </defs>
   </svg>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO / KARTE ============ -->
   <header class="hero" id="top">
-    <div class="hero-sky"></div>
-    <div class="hero-sun" aria-hidden="true"><div class="rays"></div></div>
-    <svg class="hill hill-3" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 200 C240 120 420 160 640 130 C860 100 1080 170 1260 120 C1350 96 1400 110 1440 120 V320 H0Z"/>
-    </svg>
-    <svg class="hill hill-2" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 240 C200 180 380 230 600 200 C820 170 1000 240 1220 200 C1320 182 1400 190 1440 196 V320 H0Z"/>
-    </svg>
-    <svg class="hill hill-1" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 280 C260 230 480 290 720 260 C960 230 1180 290 1440 250 V320 H0Z"/>
-    </svg>
+    <p class="eyebrow fade" style="--d:0">Wir heiraten</p>
 
-    <div class="hero-text">
-      <p class="eyebrow">Willkommen im</p>
-      <h1 class="split">Goldenen Herbst</h1>
-      <p class="lead">Scroll los und sieh zu, wie aus einem winzigen Samen ein leuchtender Riesenkürbis wird.</p>
+    <h1 class="names">
+      <span class="name fade" style="--d:1">Klara</span>
+      <span class="und fade" style="--d:2">und</span>
+      <span class="name fade" style="--d:3">Robert</span>
+    </h1>
+
+    <div class="bouquet" aria-hidden="true">
+      <svg class="heartline" viewBox="0 0 400 210" preserveAspectRatio="xMidYMid meet">
+        <path pathLength="1" d="M96 170 C150 178 210 188 252 182 C228 160 200 136 204 110 C208 82 240 76 252 100 C262 76 296 82 300 110 C304 136 276 160 252 182 C280 194 330 198 400 186"/>
+      </svg>
+      <span class="lf" style="--x:13.75%;--y:14%;--w:7.5%;--r:-30deg;--d:0"><img src="assets/leaf-a.svg" alt=""></span>
+      <span class="lf" style="--x:18.75%;--y:12%;--w:8.5%;--r:18deg;--d:1"><img src="assets/leaf-b.svg" alt=""></span>
+      <span class="lf" style="--x:20.5%;--y:13%;--w:14%;--r:30deg;--d:2"><img src="assets/berries.svg" alt=""></span>
+      <span class="lf" style="--x:10.5%;--y:55%;--w:6.5%;--r:-140deg;--d:3"><img src="assets/leaf-b.svg" alt=""></span>
+      <span class="lf big" style="--x:2.5%;--y:26%;--w:30%;--r:-22deg;--d:4"><img src="assets/maple.svg" alt=""></span>
+      <span class="lf" style="--x:23%;--y:54%;--w:6.5%;--r:105deg;--d:5"><img src="assets/leaf-a.svg" alt=""></span>
     </div>
 
-    <a class="scroll-hint" href="#grow" aria-label="Nach unten scrollen">
-      <span class="chev"></span><span class="chev"></span>
-      <small>Scrollen</small>
+    <p class="date fade" style="--d:5">
+      <span>Samstag</span>
+      <strong>09 · Oktober · 2027</strong>
+    </p>
+
+    <a class="scroll-hint fade" style="--d:7" href="#story" aria-label="Weiter nach unten">
+      <span class="line"></span>
     </a>
   </header>
 
   <main>
-    <!-- ============ KÜRBIS WÄCHST ============ -->
-    <section class="grow" id="grow" aria-label="Ein Kürbis wächst">
-      <div class="grow-sticky">
-        <div class="sky sky-day"></div>
-        <div class="sky sky-dusk"></div>
-        <div class="grow-sun"></div>
-        <div class="sky sky-night"></div>
-        <div class="stars" aria-hidden="true"></div>
-        <div class="moon"></div>
-
-        <div class="ground"></div>
-        <div class="shade"></div>
-
-        <div class="stage">
-          <div class="halo"></div>
-          <div class="pop">
-            <!-- Samen -->
-            <svg class="seed" viewBox="0 0 200 200" aria-hidden="true">
-              <ellipse cx="100" cy="188" rx="7" ry="4.5" fill="#f3e2b8" stroke="#b89a5e" stroke-width="1"/>
+    <!-- ============ KRANZ (Scroll-Animation) ============ -->
+    <section class="story" id="story" aria-label="Unsere Geschichte">
+      <div class="story-sticky">
+        <div class="wreath">
+          <div class="wreath-spin">
+            <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+              <circle pathLength="1" cx="100" cy="100" r="78" transform="rotate(-90 100 100)"/>
             </svg>
-            <!-- Keimling -->
-            <svg class="sprout" viewBox="0 0 200 200" aria-hidden="true">
-              <path d="M100 196 C100 180 98 168 100 150" stroke="#6fae3c" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <path d="M100 156 C88 144 74 148 70 158 C84 166 94 162 100 156Z" fill="#7cc04a"/>
-              <path d="M100 152 C112 138 128 142 132 152 C118 162 106 158 100 152Z" fill="#6aa83a"/>
-            </svg>
-            <!-- Kürbis -->
-            <svg class="pumpkin" viewBox="0 0 200 200" role="img" aria-label="Kürbis">
-              <ellipse class="pk-shadow" cx="100" cy="193" rx="78" ry="6"/>
-              <path class="pk-vine" pathLength="1" d="M104 62 C122 46 142 54 138 66 C134 78 118 72 124 62"/>
-              <path class="pk-leaf" d="M106 68 C118 40 150 40 160 50 C148 56 142 76 118 74 Z"/>
-              <path class="pk-stem" d="M94 84 C92 70 90 62 84 54 L96 50 C102 60 106 72 106 84 Z"/>
-              <ellipse class="pk-dark"  cx="58"  cy="136" rx="42" ry="52"/>
-              <ellipse class="pk-dark"  cx="142" cy="136" rx="42" ry="52"/>
-              <ellipse class="pk-mid"   cx="78"  cy="136" rx="38" ry="56"/>
-              <ellipse class="pk-mid"   cx="122" cy="136" rx="38" ry="56"/>
-              <ellipse class="pk-light" cx="100" cy="136" rx="30" ry="58"/>
-              <ellipse class="pk-shine" cx="82" cy="112" rx="7" ry="18" transform="rotate(14 82 112)"/>
-              <g class="pk-face">
-                <path d="M62 126 L86 126 L74 104 Z"/>
-                <path d="M114 126 L138 126 L126 104 Z"/>
-                <path d="M94 142 L106 142 L100 132 Z"/>
-                <path d="M58 154 Q100 188 142 154 L132 156 L126 166 L118 158 L108 170 L100 160 L92 170 L82 158 L74 166 L68 156 Z"/>
-              </g>
-              <g class="pk-glow"><g class="flicker">
-                <path d="M62 126 L86 126 L74 104 Z"/>
-                <path d="M114 126 L138 126 L126 104 Z"/>
-                <path d="M94 142 L106 142 L100 132 Z"/>
-                <path d="M58 154 Q100 188 142 154 L132 156 L126 166 L118 158 L108 170 L100 160 L92 170 L82 158 L74 166 L68 156 Z"/>
-              </g></g>
-            </svg>
+            <div class="wreath-leaves" aria-hidden="true"></div>
+          </div>
+          <div class="wreath-text">
+            <p class="step" data-step="0">Manche Geschichten beginnen ganz leise …</p>
+            <p class="step" data-step="1">… und werden mit jedem Herbst schöner.</p>
+            <p class="step big" data-step="2">Jetzt sagen wir <em>Ja</em>.</p>
+            <p class="step" data-step="3">Und möchten diesen Tag mit euch feiern.<small>09.10.2027</small></p>
           </div>
         </div>
-
-        <div class="caption" aria-live="polite">
-          <p class="phase">Phase <span id="phaseNum">1</span> / 6</p>
-          <h2 id="phaseTitle">Ein kleiner Samen</h2>
-          <p id="phaseText">Alles beginnt mit einem Kern in der warmen Erde.</p>
-          <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-
-        <div class="meter"><span aria-hidden="true">⚖️</span> <strong id="weight">0,2 g</strong></div>
       </div>
     </section>
 
-    <!-- ============ FARBEN (horizontal) ============ -->
-    <section class="colors" id="colors" aria-label="Die Farben des Herbstes">
-      <div class="colors-sticky">
-        <h2 class="section-title">Die Farben des Herbstes</h2>
-        <div class="track">
-          <article class="swatch" style="--c:#e8731c;--c2:#f6a33a"><div class="blob"></div><h3>Kürbisorange</h3><p>Die Farbe, die nach Suppe, Zimt und Kerzenlicht riecht.</p></article>
-          <article class="swatch" style="--c:#b8321f;--c2:#e2583a"><div class="blob"></div><h3>Ahornrot</h3><p>Wenn die Bäume ein letztes Mal richtig aufdrehen.</p></article>
-          <article class="swatch" style="--c:#e0a82e;--c2:#f6d36b"><div class="blob"></div><h3>Goldgelb</h3><p>Tiefstehende Sonne auf Birkenblättern.</p></article>
-          <article class="swatch" style="--c:#6b3a1a;--c2:#9a5a2c"><div class="blob"></div><h3>Kastanienbraun</h3><p>Glänzend, glatt und perfekt für die Jackentasche.</p></article>
-          <article class="swatch" style="--c:#5f7a32;--c2:#8fa84f"><div class="blob"></div><h3>Moosgrün</h3><p>Weiche Waldböden nach dem ersten Regen.</p></article>
-          <article class="swatch" style="--c:#7d7f8f;--c2:#b4b6c2"><div class="blob"></div><h3>Nebelgrau</h3><p>Morgens über den Feldern, still und geheimnisvoll.</p></article>
-        </div>
+    <!-- ============ COUNTDOWN ============ -->
+    <section class="countdown section">
+      <p class="eyebrow reveal">Es dauert nur noch</p>
+      <div class="cd reveal" style="--d:1" id="countdown" role="timer" aria-live="off">
+        <div><strong data-u="d">000</strong><span>Tage</span></div>
+        <div><strong data-u="h">00</strong><span>Stunden</span></div>
+        <div><strong data-u="m">00</strong><span>Minuten</span></div>
+        <div><strong data-u="s">00</strong><span>Sekunden</span></div>
       </div>
     </section>
 
-    <!-- ============ FAKTEN ============ -->
-    <section class="facts">
-      <h2 class="section-title reveal">Kürbis in Zahlen</h2>
-      <div class="fact-grid">
-        <div class="fact reveal" style="--d:0"><strong data-count="90">0</strong><span>% Wasser</span></div>
-        <div class="fact reveal" style="--d:1"><strong data-count="800" data-suffix="+">0</strong><span>Sorten weltweit</span></div>
-        <div class="fact reveal" style="--d:2"><strong data-count="100" data-prefix="~">0</strong><span>Tage bis zur Reife</span></div>
-      </div>
+    <!-- ============ ABLAUF ============ -->
+    <section class="plan section paper-2" id="ablauf">
+      <img class="ornament reveal" src="assets/berries.svg" alt="" aria-hidden="true">
+      <h2 class="reveal">Der Tag</h2>
+      <ol class="timeline">
+        <li class="t-item"><span class="dot"><img src="assets/leaf-a.svg" alt=""></span><time>14:00</time><h3>Freie Trauung</h3><p>Unter freiem Himmel – bei Regen im Gutshaus.</p></li>
+        <li class="t-item"><span class="dot"><img src="assets/leaf-b.svg" alt=""></span><time>15:00</time><h3>Sektempfang</h3><p>Anstoßen, Kuchen &amp; Zeit für Glückwünsche.</p></li>
+        <li class="t-item"><span class="dot"><img src="assets/maple.svg" alt=""></span><time>18:30</time><h3>Abendessen</h3><p>Ein herbstliches Menü an langen Tafeln.</p></li>
+        <li class="t-item"><span class="dot"><img src="assets/leaf-a.svg" alt=""></span><time>21:00</time><h3>Tanz &amp; Feier</h3><p>Bis die Schuhe drücken.</p></li>
+      </ol>
     </section>
 
-    <!-- ============ MOMENTE ============ -->
-    <section class="moments">
-      <h2 class="section-title reveal">Herbstmomente</h2>
+    <!-- ============ INFOS ============ -->
+    <section class="info section">
+      <h2 class="reveal">Gut zu wissen</h2>
       <div class="cards">
-        <article class="card reveal" style="--d:0"><div class="icon">🍁</div><h3>Laub rascheln</h3><p>Ein Spaziergang durch knisternde Blätter – das beste Geräusch des Jahres.</p></article>
-        <article class="card reveal" style="--d:1"><div class="icon">☕</div><h3>Kürbis-Latte</h3><p>Warm, würzig, mit einer Prise Zimt. Perfekt für graue Nachmittage.</p></article>
-        <article class="card reveal" style="--d:2"><div class="icon">🍎</div><h3>Apfelernte</h3><p>Frisch vom Baum, knackig und süß – oder direkt als Apfelkuchen.</p></article>
-        <article class="card reveal" style="--d:0"><div class="icon">🌰</div><h3>Kastanien</h3><p>Glänzend braun und wie gemacht für Kastanienmännchen.</p></article>
-        <article class="card reveal" style="--d:1"><div class="icon">🦔</div><h3>Igel-Besuch</h3><p>Die kleinen Stachelfreunde suchen sich ein gemütliches Winterquartier.</p></article>
-        <article class="card reveal" style="--d:2"><div class="icon">🕯️</div><h3>Kerzenschein</h3><p>Wenn es früher dunkel wird, beginnt die gemütlichste Zeit.</p></article>
+        <article class="card reveal" style="--d:0">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M24 44 C24 44 10 28 10 18 A14 14 0 0 1 38 18 C38 28 24 44 24 44 Z M24 12 A6 6 0 1 0 24.01 12"/></svg>
+          <h3>Location</h3>
+          <p>Gut Musterhof<br>Unter den Linden 2<br>12345 Musterstadt</p>
+        </article>
+        <article class="card reveal" style="--d:1">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M6 36 V12 M6 28 H42 V36 M42 28 V22 C42 18 39 16 35 16 H20 V28 M10 22 A4 4 0 1 0 10.01 22"/></svg>
+          <h3>Unterkunft</h3>
+          <p>Auf dem Gut gibt es ein Zimmerkontingent für unsere Gäste. Sprecht uns gerne an.</p>
+        </article>
+        <article class="card reveal" style="--d:2">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M24 14 A4 4 0 1 1 28 10 M24 14 V18 L6 32 C4 34 5 36 8 36 H40 C43 36 44 34 42 32 L24 18"/></svg>
+          <h3>Dresscode</h3>
+          <p>Festlich – gerne in warmen Herbsttönen.</p>
+        </article>
+        <article class="card reveal" style="--d:3">
+          <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M8 20 H40 V28 H8 Z M10 28 V42 H38 V28 M24 20 V42 M24 20 C18 20 12 18 14 12 C16 7 22 12 24 20 C26 12 32 7 34 12 C36 18 30 20 24 20"/></svg>
+          <h3>Geschenke</h3>
+          <p>Das schönste Geschenk ist, dass ihr dabei seid.</p>
+        </article>
       </div>
     </section>
 
-    <!-- ============ WIND ============ -->
-    <section class="gust">
-      <div class="gust-inner reveal">
-        <h2 class="section-title">Herbstwind</h2>
-        <p>Tippe irgendwo auf den Bildschirm – oder lass es so richtig stürmen.</p>
-        <button id="gustBtn" type="button"><span aria-hidden="true">🌬️</span> Wind machen</button>
+    <!-- ============ RSVP ============ -->
+    <section class="rsvp section paper-2" id="rsvp">
+      <div class="rsvp-card reveal">
+        <img class="corner c1" src="assets/maple.svg" alt="" aria-hidden="true">
+        <img class="corner c2" src="assets/leaf-b.svg" alt="" aria-hidden="true">
+        <p class="eyebrow">Um Antwort wird gebeten</p>
+        <h2>bis zum 01. August 2027</h2>
+        <p>Wir freuen uns sehr, wenn ihr dabei seid.</p>
+        <button type="button" class="btn" id="rsvpBtn">Zusagen</button>
+        <p class="note" id="rsvpNote" hidden>Das Antwortformular folgt in Kürze.</p>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER / NACHT ============ -->
-  <footer class="night">
-    <div class="fireflies" aria-hidden="true"></div>
-    <div class="lanterns reveal" aria-hidden="true">
-      <svg style="--d:0"><use href="#lantern"/></svg>
-      <svg style="--d:1"><use href="#lantern"/></svg>
-      <svg style="--d:2"><use href="#lantern"/></svg>
-    </div>
-    <h2 class="reveal">Einen schönen Herbst!</h2>
-    <p class="reveal">Mach's dir gemütlich. 🍂</p>
-    <a class="to-top" href="#top">Nochmal von vorn ↑</a>
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer section">
+    <svg class="heartline small reveal" viewBox="84 66 324 140" aria-hidden="true">
+      <path pathLength="1" d="M96 170 C150 178 210 188 252 182 C228 160 200 136 204 110 C208 82 240 76 252 100 C262 76 296 82 300 110 C304 136 276 160 252 182 C280 194 330 198 400 186"/>
+    </svg>
+    <p class="eyebrow reveal">Wir freuen uns auf euch</p>
+    <p class="sign reveal">Klara &amp; Robert</p>
   </footer>
 
   <script src="script.js" defer></script>

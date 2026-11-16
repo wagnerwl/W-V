@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="240" height="320">
+  <defs>
+  <filter id="wc" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="9" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="2" result="b"/>
+    <feColorMatrix in="b" type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.16  0 0 0 0 0.04  0 0 0 2.2 -1.0" result="bl"/>
+    <feComposite in="bl" in2="d" operator="in" result="blot"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="5" result="g"/>
+    <feColorMatrix in="g" type="matrix" values="0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.8  0 0 0 0.55 -0.28" result="gr"/>
+    <feComposite in="gr" in2="d" operator="in" result="grain"/>
+    <feMorphology in="d" operator="erode" radius="2.2" result="er"/>
+    <feComposite in="d" in2="er" operator="out" result="ring"/>
+    <feGaussianBlur in="ring" stdDeviation="1.1" result="ringb"/>
+    <feFlood flood-color="#6b2a0c" flood-opacity=".55"/>
+    <feComposite in2="ringb" operator="in" result="edge"/>
+    <feComposite in="edge" in2="d" operator="in" result="edge2"/>
+    <feMerge><feMergeNode in="d"/><feMergeNode in="blot"/><feMergeNode in="grain"/><feMergeNode in="edge2"/></feMerge>
+  </filter>
+    <radialGradient id="b" cx="38%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#f3b26a"/>
+      <stop offset=".55" stop-color="#d8823a"/>
+      <stop offset="1" stop-color="#a24e1e"/>
+    </radialGradient>
+  </defs>
+  <g filter="url(#wc)">
+    <g fill="none" stroke="#8a5a2e" stroke-width="1.6" stroke-linecap="round">
+      <path d="M60 156 Q58 110 62 70"/>
+      <path d="M61 112 Q40 96 30 70"/><path d="M61 100 Q80 84 92 58"/>
+      <path d="M62 80 Q52 56 50 34"/><path d="M62 78 Q72 56 76 30"/>
+      <path d="M30 70 L22 54"/><path d="M30 70 L36 50"/>
+      <path d="M92 58 L100 42"/><path d="M92 58 L86 40"/>
+      <path d="M62 70 L62 20"/>
+    </g>
+    <g fill="url(#b)">
+      <circle cx="22" cy="50" r="7"/><circle cx="36" cy="46" r="6.5"/>
+      <circle cx="100" cy="38" r="7"/><circle cx="86" cy="36" r="6"/>
+      <circle cx="50" cy="30" r="6.5"/><circle cx="76" cy="26" r="6.5"/>
+      <circle cx="62" cy="15" r="7.5"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 210" width="400" height="420">
+  <defs>
+  <filter id="wc" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="11" result="b"/>
+    <feColorMatrix in="b" type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.16  0 0 0 0 0.04  0 0 0 2.2 -1.0" result="bl"/>
+    <feComposite in="bl" in2="d" operator="in" result="blot"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="5" result="g"/>
+    <feColorMatrix in="g" type="matrix" values="0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.8  0 0 0 0.55 -0.28" result="gr"/>
+    <feComposite in="gr" in2="d" operator="in" result="grain"/>
+    <feMorphology in="d" operator="erode" radius="2.2" result="er"/>
+    <feComposite in="d" in2="er" operator="out" result="ring"/>
+    <feGaussianBlur in="ring" stdDeviation="1.1" result="ringb"/>
+    <feFlood flood-color="#7e3210" flood-opacity=".55"/>
+    <feComposite in2="ringb" operator="in" result="edge"/>
+    <feComposite in="edge" in2="d" operator="in" result="edge2"/>
+    <feMerge><feMergeNode in="d"/><feMergeNode in="blot"/><feMergeNode in="grain"/><feMergeNode in="edge2"/></feMerge>
+  </filter>
+    <radialGradient id="f" cx="48%" cy="58%" r="62%">
+      <stop offset="0" stop-color="#f9cd62"/>
+      <stop offset=".35" stop-color="#f2a23a"/>
+      <stop offset=".7" stop-color="#e0702a"/>
+      <stop offset="1" stop-color="#b4461c"/>
+    </radialGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9c4a1c" stop-opacity=".0"/>
+      <stop offset=".6" stop-color="#9c4a1c" stop-opacity=".0"/>
+      <stop offset="1" stop-color="#8a3a14" stop-opacity=".45"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#wc)">
+    <path fill="url(#f)" d="M100 152 Q86 150 74 160 L70 150 Q54 156 38 150 L46 140 Q30 128 20 112 L36 110 Q26 92 22 72 L40 82 Q44 66 40 50 Q58 60 66 74 L72 62 Q80 80 84 92 Q80 64 86 42 L90 50 Q87 34 91 22 L96 26 Q98 14 100 6 Q102 14 104 26 L109 22 Q113 34 110 50 L114 42 Q120 64 116 92 Q120 80 128 62 L134 74 Q142 60 160 50 Q156 66 160 82 L178 72 Q174 92 164 110 L180 112 Q170 128 154 140 L162 150 Q146 156 130 150 L126 160 Q114 150 100 152 Z"/>
+    <path fill="url(#s)" d="M100 152 Q86 150 74 160 L70 150 Q54 156 38 150 L46 140 Q30 128 20 112 L36 110 Q26 92 22 72 L40 82 Q44 66 40 50 Q58 60 66 74 L72 62 Q80 80 84 92 Q80 64 86 42 L90 50 Q87 34 91 22 L96 26 Q98 14 100 6 Q102 14 104 26 L109 22 Q113 34 110 50 L114 42 Q120 64 116 92 Q120 80 128 62 L134 74 Q142 60 160 50 Q156 66 160 82 L178 72 Q174 92 164 110 L180 112 Q170 128 154 140 L162 150 Q146 156 130 150 L126 160 Q114 150 100 152 Z"/>
+    <g fill="none" stroke="#93421a" stroke-opacity=".5" stroke-width="1.3" stroke-linecap="round">
+      <path d="M100 150 L100 18"/>
+      <path d="M100 140 Q70 110 34 80"/>
+      <path d="M100 140 Q130 110 166 80"/>
+      <path d="M100 146 Q72 138 44 146"/>
+      <path d="M100 146 Q128 138 156 146"/>
+      <path d="M100 118 Q90 96 84 70"/><path d="M100 118 Q110 96 116 70"/>
+    </g>
+    <path d="M100 150 Q101 178 96 204" fill="none" stroke="#8a4a1e" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
